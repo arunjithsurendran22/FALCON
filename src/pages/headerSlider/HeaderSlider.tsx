@@ -1,12 +1,12 @@
 import Slider from '@/components/Slider/Slider';
-import { Header } from '@react-navigation/stack';
+// import { Header } from '@react-navigation/stack';
 import React from 'react';
 
 
 const HeaderSlider = () => {
   return (
     <div className="relative">
-      <Header />
+      {/* <Header /> */}
       <Slider />
     </div>
   );
