@@ -19,7 +19,7 @@ const Slider = () => {
     {
       type: "video",
       src: "/videos/video-mainhome.mp4",
-      title: "Relaible Service Trasport",
+      title: "Reliable Service Transport",
     },
   ];
 
@@ -29,26 +29,26 @@ const Slider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
-      setShowTitle(false); // Hide title when transitioning to the next slide
-    }, 10000); // Change slide every 10 seconds (longer duration)
+      setShowTitle(false);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [carouselItems.length]);
 
   useEffect(() => {
     const titleTimeout = setTimeout(() => {
-      setShowTitle(true); // Show title after a delay
-    }, 2000); // Show title after 2 seconds
+      setShowTitle(true);
+    }, 2000);
 
     return () => clearTimeout(titleTimeout);
-  }, [currentIndex]); // Run this effect whenever the currentIndex changes
+  }, [currentIndex]);
 
   const renderItem = (item: any) => {
     if (item.type === "image") {
       return <img src={item.src} alt={item.alt} className="w-full h-full object-cover image-fade-in" />;
     } else if (item.type === "video") {
       return (
-        <video className="w-full h-full object-cover image-fade-in" autoPlay loop muted>
+        <video className="w-full h-full object-cover image-fade-in" autoPlay loop muted playsInline>
           <source src={item.src} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -57,13 +57,13 @@ const Slider = () => {
     return null;
   };
 
-  const renderTitle = (title: any) => {
+  const renderTitle = (title: string) => {
     return (
       <div className="title-container">
-        {title.split("").map((letter: any, index: any) => (
+        {title.split("").map((letter, index) => (
           <span
             key={index}
-            style={{ animationDelay: `${0.1 * index}s` }} // Stagger the animation for each letter
+            style={{ animationDelay: `${0.1 * index}s` }}
             className="title-animation"
           >
             {letter}
@@ -74,11 +74,11 @@ const Slider = () => {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-[300px] sm:h-[400px] md:h-screen overflow-hidden">
       {renderItem(carouselItems[currentIndex])}
       {showTitle && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white text-4xl md:text-6xl font-bold">
+        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-8">
+          <h1 className="text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center">
             {renderTitle(carouselItems[currentIndex].title)}
           </h1>
         </div>

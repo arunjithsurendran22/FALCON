@@ -43,29 +43,30 @@ const teamMembers = [
 
 function SectionSix() {
   return (
-    <div className="relative w-full py-10 bg-white overflow-hidden">
-      <div className="text-center mb-8">
-        <h1 className="text-black text-7xl">Meet Our Team</h1>
+    <div className="relative w-full py-8 sm:py-10 md:py-12 lg:py-16 bg-white overflow-hidden">
+      <div className="text-center mb-6 sm:mb-8 md:mb-10">
+        <h1 className="text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-medium  heading-shadow">Meet Our Team</h1>
       </div>
-      <div className="relative w-11/12 mx-auto">
+      <div className="relative w-full overflow-hidden">
         <div className="flex space-x-4 animate-marquee">
           {teamMembers.concat(teamMembers).map((member, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-1/4 px-2"
-              style={{ flexBasis: "25%" }}
+              className="flex-shrink-0 w-64 sm:w-72 md:w-80 lg:w-96 px-2"
             >
               <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
                 <img
                   src={member.img}
                   alt={member.name}
-                  className="w-full h-[25rem] object-cover"
+                  className="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover"
                 />
-                <div className="absolute bottom-0 left-0 w-full p-4 bg-white bg-opacity-10 backdrop-blur-md">
-                  <h2 className="text-xl font-semibold text-gray-800">
+                <div className="absolute bottom-0 left-0 w-full p-3 sm:p-4 bg-white bg-opacity-10 backdrop-blur-md">
+                  <h2 className="text-lg sm:text-xl font-semibold text-gray-800 truncate">
                     {member.name}
                   </h2>
-                  <p className="text-gray-600">{member.description}</p>
+                  <p className="text-sm sm:text-base text-gray-600 line-clamp-2">
+                    {member.description}
+                  </p>
                 </div>
               </div>
             </div>
